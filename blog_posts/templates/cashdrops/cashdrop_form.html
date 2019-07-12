@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>PayTracker - CashDrop Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured payment tracking software for sweet investments group" name="description" />
+        <meta content="Tumukunde Arnold" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        {% load staticfiles %}
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+
+        <!-- App css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <ul class="list-unstyled topnav-menu float-right mb-0">
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <img src="{% static 'assets/images/users/user-1.jpg' %}" alt="user-image" class="rounded-circle">
+                            <span class="pro-user-name ml-1">
+                                {{ user.get_username }}. <i class="mdi mdi-chevron-down"></i> 
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h5 class="m-0 text-white">
+                                    Welcome !
+                                </h5>
+                            </div>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>My Account</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- item-->
+                            <a href="{% url 'logout' %}" class="dropdown-item notify-item">
+                                <i class="fe-log-out"></i>
+                                <span>Logout</span>
+                            </a>
+
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- LOGO -->
+                <div class="logo-box">
+                    <a href="index.html" class="logo text-center">
+                        <span class="logo-lg">
+                             <span class="logo-lg-text-light">PayTrack</span> 
+                        </span>
+                        <span class="logo-sm">
+                            <span class="logo-sm-text-dark">P</span>
+                            
+                        </span>
+                    </a>
+                </div>
+
+                <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                    <li>
+                        <button class="button-menu-mobile waves-effect">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <!-- end Topbar -->
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left-side-menu">
+
+                <div class="slimscroll-menu">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+
+                        <ul class="metismenu" id="side-menu">
+
+                            <li class="menu-title">Navigation</li>
+
+                            <li>
+                                <a href="{% url 'cashdrops:cashdrop_list' %}">
+                                    <i class="la la-dashboard"></i>
+                                    <span> Dashboard </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'clients:client_list' %}">
+                                    <i class="la la-cube"></i>
+                                    <span> Clients </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'agents:agent_list' %}">
+                                    <i class="la la-clone"></i>
+                                    <span> Agents </span>
+                                </a>
+                            </li>
+                
+                            <li>
+                                <a href="{% url 'cashdrops:cashdrop_list' %}">
+                                    <i class="la la-envelope"></i>
+                                    <span> CashDrops </span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- End Sidebar -->
+
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">PayTrack</a></li>
+                                            <li class="breadcrumb-item active">Agents</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Agents Form</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row no-gutters">
+                            <div class="col-md-6 col-xl-3">
+                                <div class="widget-rounded-circle bg-soft-primary rounded-0 card-box mb-0">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle bg-soft-primary">
+                                                <i class="fe-tag font-22 avatar-title text-primary"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1"><span data-plugin="counterup">3,947</span></h3>
+                                                <p class="text-primary mb-1 text-truncate">Total Cashdrops</p>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+
+                            <div class="col-md-6 col-xl-3">
+                                <div class="widget-rounded-circle bg-soft-warning rounded-0 card-box mb-0">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle bg-soft-warning">
+                                                <i class="fe-clock font-22 avatar-title text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1"><span data-plugin="counterup">624</span></h3>
+                                                <p class="text-warning mb-1 text-truncate">Pending</p>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+
+                            <div class="col-md-6 col-xl-3">
+                                <div class="widget-rounded-circle bg-soft-success rounded-0 card-box mb-0">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle bg-soft-success">
+                                                <i class="fe-check-circle font-22 avatar-title text-success"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1"><span data-plugin="counterup">3195</span></h3>
+                                                <p class="text-success mb-1 text-truncate">Complete</p>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+
+                            <div class="col-md-6 col-xl-3">
+                                <div class="widget-rounded-circle bg-soft-danger rounded-0 card-box mb-0">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle bg-soft-danger">
+                                                <i class="fe-users font-22 avatar-title text-danger"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1"><span data-plugin="counterup">128</span></h3>
+                                                <p class="text-danger mb-1 text-truncate">Clients</p>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box">
+                                    <h4 class="header-title mb-4">Agents</h4>
+                                    <form method='post'>{% csrf_token %}
+                                        {{ form.as_p }}
+                                        <input class="btn btn-primary waves-effect waves-light" type="submit" value="Submit" />
+                                    </form>
+                                </div>
+                            </div><!-- end col -->
+                        </div>
+                        <!-- end row -->    
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2019 &copy; PayTracker by <a href="">HostGivers</a> 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="javascript:void(0);">About Us</a>
+                                    <a href="javascript:void(0);">Help</a>
+                                    <a href="javascript:void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- Vendor js -->
+        <script src="{% static 'assets/js/vendor.min.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/app.min.js' %}"></script>
+        
+    </body>
+</html>

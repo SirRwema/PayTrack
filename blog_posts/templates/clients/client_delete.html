@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>PayTracker - CashDrop Delete</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured payment tracking software for sweet investments group" name="description" />
+        <meta content="Tumukunde Arnold" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        {% load staticfiles %}
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+
+        <!-- App css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body>
+        <div class="container">
+            <form method="post">{% csrf_token %}
+                Are you sure you want to delete "{{ object }}" ?
+                <input class="btn btn-danger waves-effect waves-light" type="submit" value="Submit" />
+            </form>
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- Vendor js -->
+        <script src="{% static 'assets/js/vendor.min.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/app.min.js' %}"></script>
+    </body>
+</html>
