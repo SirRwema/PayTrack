@@ -1,22 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django import forms
+from django.forms import ModelForm, TextInput, EmailInput
 from agents.models import Agent
 from phonenumber_field.formfields import PhoneNumberField
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-class AgentForm(forms.ModelForm):
+class AgentForm(ModelForm):
     class Meta:
         model = Agent
-        fields = ['id', 'slug', 'agent_name', 'agent_phonenumber', 'agent_email', 'agent_location']
+        fields = ['id', 'agent_name', 'agent_phonenumber', 'agent_email', 'agent_location']
 
 
-        
-        #agent_name = forms.CharField(widget=forms.TextInput(attrs={'id': 'inlineFormInput',  'class':'form-control mb-2'}))
-        #agent_phonenumber = forms.CharField(widget=forms.TextInput(attrs={'id': 'inlineFormInput',  'class':'form-control mb-2'}))
-        #agent_email = forms.CharField(widget=forms.TextInput(attrs={'id': 'inlineFormInput',  'class':'form-control mb-2'}))
-        #agent_location = forms.CharField(widget=forms.TextInput(attrs={'id': 'inlineFormInput',  'class':'form-control mb-2'}))
+        widgets = {
+                    'agent_name': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                    'agent_phonenumber': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                    'agent_email': EmailInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                    'agent_location': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                }
 
 @login_required(login_url='/accounts/login/')           
 def agent_list(request, template_name='agents/agent_list.html'):

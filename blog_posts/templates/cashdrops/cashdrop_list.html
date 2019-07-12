@@ -179,7 +179,7 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="text-right">
-                                                <h3 class="text-dark mt-1"><span data-plugin="counterup">3,947</span></h3>
+                                                <h3 class="text-dark mt-1"><span data-plugin="counterup"> {{ total_cashdrops }} </span></h3>
                                                 <p class="text-primary mb-1 text-truncate">Total Cashdrops</p>
                                             </div>
                                         </div>
@@ -269,7 +269,7 @@
                                         <tbody>
                                         {% for cashdrop in object_list %}
                                         <tr>
-                                            <td><b><a href="{% url "cashdrops:cashdrop_edit" cashdrop.id %}">{{ cashdrop.position }}</a></b></td>
+                                            <td><b><a href="{% url "cashdrops:cashdrop_edit" cashdrop.id %}">{{ cashdrop.id }}</a></b></td>
                                             <td>
                                                 <a href="javascript: void(0);" class="text-body">
                                                     <span class="ml-2">{{ cashdrop.delivery_location }}</span>
@@ -277,7 +277,7 @@
                                             </td>
 
                                             <td>
-                                                {{ cashdrop.delivered_to }}
+                                                {{ cashdrop.receiver }}
                                             </td>
 
                                             <td>
@@ -292,6 +292,9 @@
                                             </td>
                                             <td>
                                                 {{ cashdrop.delivery_agent }}
+                                            </td>
+                                            <td>
+                                                {{ cashdrop.sent_by}}
                                             </td>
                                             <td>
                                                 {{ cashdrop.status }}

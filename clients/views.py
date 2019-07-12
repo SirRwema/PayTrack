@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, EmailInput
 from clients.models import Clients
 from django.contrib.auth.decorators import login_required
 
@@ -8,8 +8,13 @@ from django.contrib.auth.decorators import login_required
 class ClientForm(ModelForm):
     class Meta:
         model = Clients
-        fields = ['id', 'slug', 'client_name', 'client_phonenumber', 'client_email', 'client_location']
-
+        fields = ('id', 'client_name', 'client_phonenumber', 'client_email', 'client_location')
+        widgets = {
+                    'client_name': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                    'client_phonenumber': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                    'client_email': EmailInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                    'client_location': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                }
 @login_required(login_url='/accounts/login/')
 def client_list(request, template_name='clients/client_list.html'):
     clients = Clients.objects.all()
