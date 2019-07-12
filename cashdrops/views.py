@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import ModelForm, TextInput, EmailInput, DateInput, NumberInput, Select
 from cashdrops.models import Cashdrop
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 
 # Create your views here.
 
@@ -23,7 +24,7 @@ class CashdropForm(ModelForm):
 
 @login_required(login_url='/accounts/login/')
 def counters(request, template_name='cashdrops/cashdrop_list.html' ):
-    total_cashdrops = Cashdrop.objects.count()
+    total_cashdrops = Cashdrop.objects.aggregate(Count())
     context = { 'total_cashdrops': total_cashdrops }
     return render(request, template_name , context)
 
