@@ -7,6 +7,7 @@ Contact: support@coderthemes.com
 File: Main Css File
 */
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700|Work+Sans:400,500,600");
+
 html {
   position: relative;
   min-height: 100%; }
@@ -870,7 +871,7 @@ body.boxed-layout.enlarged .footer {
     top: 10px; }
 
 .cta-box {
-  background-image: url("{% static 'assets/images/bg-pattern-2.png' %}");
+  background-image: url("/static/assets/images/bg-pattern-2.png");
   background-size: cover; }
   .cta-box .cta-box-title {
     font-size: 20px;
@@ -2075,7 +2076,7 @@ div.hopscotch-bubble {
 
 .jstree-default .jstree-node,
 .jstree-default .jstree-icon {
-  background-image: url("{% static 'assets/images/plugins/jstree.png' %}"); }
+  background-image: url("/static/assets/images/plugins/jstree.png"); }
 
 .jstree-default .jstree-node {
   background-position: -292px -4px;
@@ -2091,7 +2092,7 @@ div.hopscotch-bubble {
   height: 28px; }
 
 .jstree-default > .jstree-container-ul .jstree-loading > .jstree-ocl {
-  background: url("{% static 'assets/images/plugins/loading.gif' %}") center center no-repeat; }
+  background: url("/static/assets/images/plugins/loading.gif") center center no-repeat; }
 
 .jstree-default .jstree-icon:empty {
   width: 24px;
@@ -2680,8 +2681,8 @@ div.dt-button-info {
   font-family: "summernote";
   font-style: normal;
   font-weight: normal;
-  src: url("../fonts/summernote.eot");
-  src: url("../fonts/summernote.eot?#iefix") format("embedded-opentype"), url("../fonts/summernote.woff?") format("woff"), url("../fonts/summernote.ttf?") format("truetype"); }
+  src: url("/static/assets/fonts/summernote.eot");
+  src: url("/static/assets/fonts/summernote.eot?#iefix") format("embedded-opentype"), url("/static/assets/fonts/summernote.woff?") format("woff"), url("/static/assets/fonts/summernote.ttf?") format("truetype"); }
 
 .note-editor.note-frame {
   border: 1px solid #ced4da;
@@ -3017,7 +3018,7 @@ body.authentication-bg {
   text-align: center; }
 
 body.authentication-bg-pattern {
-  background-image: url("{% static 'assets/images/bg-pattern.png' %}"); }
+  background-image: url("/static/assets/images/bg-pattern.png/"); }
 
 .logout-icon {
   width: 140px; }
