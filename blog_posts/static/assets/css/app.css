@@ -870,7 +870,7 @@ body.boxed-layout.enlarged .footer {
     top: 10px; }
 
 .cta-box {
-  background-image: url(../images/bg-pattern-2.png);
+  background-image: url("{% static 'assets/images/bg-pattern-2.png' %}");
   background-size: cover; }
   .cta-box .cta-box-title {
     font-size: 20px;
@@ -2075,7 +2075,7 @@ div.hopscotch-bubble {
 
 .jstree-default .jstree-node,
 .jstree-default .jstree-icon {
-  background-image: url("../images/plugins/jstree.png"); }
+  background-image: url("{% static 'assets/images/plugins/jstree.png' %}"); }
 
 .jstree-default .jstree-node {
   background-position: -292px -4px;
@@ -2091,7 +2091,7 @@ div.hopscotch-bubble {
   height: 28px; }
 
 .jstree-default > .jstree-container-ul .jstree-loading > .jstree-ocl {
-  background: url("../images/plugins/loading.gif") center center no-repeat; }
+  background: url("{% static 'assets/images/plugins/loading.gif' %}") center center no-repeat; }
 
 .jstree-default .jstree-icon:empty {
   width: 24px;
@@ -3017,7 +3017,7 @@ body.authentication-bg {
   text-align: center; }
 
 body.authentication-bg-pattern {
-  background-image: url("../images/bg-pattern.png"); }
+  background-image: url("{% static 'assets/images/bg-pattern.png' %}"); }
 
 .logout-icon {
   width: 140px; }
