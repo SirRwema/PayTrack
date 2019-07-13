@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import ModelForm, TextInput, EmailInput
 from clients.models import Clients
+from cashdrops.models import Cashdrop
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -15,6 +16,19 @@ class ClientForm(ModelForm):
                     'client_email': EmailInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
                     'client_location': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
                 }
+
+@login_required(login_url='/accounts/login/')
+def counters(request, template_name='cashdrops/cashdrop_list.html' ):
+    total_cashdrops = Cashdrop.objects.count()
+    pending_cashdrops = Cashdrop.objects.filter(status = 'pending').count()
+    complete_cashdrops = Cashdrop.objects.filter(status = 'complete').count()
+    cancelled_cashdrops = Cashdrop.objects.filter(status = 'cancelled').count()
+    context = { 'total_cashdrops': total_cashdrops,
+                'pending_cashdrops':pending_cashdrops,
+                'complete_cashdrops':complete_cashdrops,
+                'cancelled_cashdrops':cancelled_cashdrops }
+    return render(request, template_name , context)
+
 @login_required(login_url='/accounts/login/')
 def client_list(request, template_name='clients/client_list.html'):
     clients = Clients.objects.all()

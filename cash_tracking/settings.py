@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$+$ez0@$rb_r8@q@-3l=kr6^0zl72!(hf=#t4fc#kzw1@07y6n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['paytrack.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
