@@ -255,6 +255,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Agent Name</th>
+                                            <th>Agent Personnel</th>
                                             <th>Phone Number</th>
                                             <th>Email</th>
                                             <th>Location</th>
@@ -263,7 +264,7 @@
                                         </thead>
 
                                         <tbody>
-                                        {% for agent in object_list %}
+                                        {% for agent in agents %}
                                         <tr>
                                             <td><b><a href="{% url "agents:agent_edit" agent.id %}">{{ agent.id }}</a></b></td>
                                             <td>
@@ -271,7 +272,9 @@
                                                     <span class="ml-2">{{ agent.agent_name }}</span>
                                                 </a>
                                             </td>
-
+                                            <td>
+                                                {{ agent.agent_personnel }}
+                                            </td>
                                             <td>
                                                 {{ agent.agent_phonenumber }}
                                             </td>
@@ -281,7 +284,7 @@
                                             </td>
 
                                             <td>
-                                                {{ agent.agent_location }}
+                                                {{ agent.agent_personnel_location }}
                                             </td>
 
 

@@ -3,20 +3,22 @@ from django.forms import ModelForm, TextInput, EmailInput, DateInput, NumberInpu
 from cashdrops.models import Cashdrop
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
+total_cashdrops = Cashdrop.objects.count()
+pending_cashdrops = Cashdrop.objects.filter(status = 'Pending').count()
+complete_cashdrops = Cashdrop.objects.filter(status = 'Complete').count()
+cancelled_cashdrops = Cashdrop.objects.filter(status = 'Cancelled').count() 
 
 class CashdropForm(ModelForm):
     class Meta:
         model = Cashdrop
-        fields = ['id','delivery_location', 'receiver', 'date_of_delivery', 'delivery_amount', 'rate', 'delivery_agent', 'sent_by', 'status']
+        fields = ['id','delivery_location', 'receiver', 'date_of_delivery', 'delivery_amount', 'rate', 'delivery_personnel', 'sent_by', 'status']
         widgets = {
                     'delivery_location': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
                     'receiver': TextInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
                     'date_of_delivery': DateInput(attrs={'class': 'form-control', 'id': 'example-date', 'type':'date'}),
                     'delivery_amount': NumberInput(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
                     'rate': Select(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
-                    'delivery_agent': Select(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
+                    'delivery_personnel': Select(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
                     'sent_by': Select(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
                     'status': Select(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'})
                 }
@@ -36,9 +38,13 @@ def counters(request, template_name='cashdrops/cashdrop_list.html' ):
 @login_required(login_url='/accounts/login/')
 def cashdrop_list(request, template_name='cashdrops/cashdrop_list.html'):
     cashdrops = Cashdrop.objects.all()
-    data = {}
-    data['object_list'] = cashdrops
-    return render(request, template_name, data)
+    context = { 
+                'cashdrops':cashdrops,
+                'total_cashdrops': total_cashdrops,
+                'pending_cashdrops':pending_cashdrops,
+                'complete_cashdrops':complete_cashdrops,
+                'cancelled_cashdrops':cancelled_cashdrops }
+    return render(request, template_name , context)
 
 @login_required(login_url='/accounts/login/')
 def cashdrop_create(request, template_name='cashdrops/cashdrop_form.html'):

@@ -249,6 +249,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Client Name</th>
+                                            <th>Appointed Personnel</th>
                                             <th>Phone Number</th>
                                             <th>Email</th>
                                             <th>Location</th>
@@ -257,7 +258,7 @@
                                         </thead>
 
                                         <tbody>
-                                        {% for client in object_list %}
+                                        {% for client in clients %}
                                         <tr>
                                             <td><b><a href="{% url "clients:client_edit" client.id %}">{{ client.id }}</a></b></td>
                                             <td>
@@ -267,9 +268,11 @@
                                             </td>
 
                                             <td>
+                                                {{ client.client_personnel }}
+                                            </td>
+                                            <td>
                                                 {{ client.client_phonenumber }}
                                             </td>
-
                                             <td>
                                                 {{ client.client_email }}
                                             </td>

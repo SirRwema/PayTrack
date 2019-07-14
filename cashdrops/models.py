@@ -28,11 +28,12 @@ class Cashdrop(models.Model):
     )
     delivery_location = models.CharField(max_length=250)
     receiver = models.CharField(max_length=250)
+    receiver_phone = models.CharField(max_length=250)
     date_of_delivery = models.DateField(auto_now=False)
     date_sent = models.DateField(auto_now_add=True)
     delivery_amount = models.IntegerField()
     rate = models.CharField(choices=CURRENCY, default='choose rate', max_length=30)
-    delivery_agent = models.ForeignKey(Agent, on_delete=models.SET_NULL, null=True)
+    delivery_personnel = models.ForeignKey(Agent, on_delete=models.SET_NULL, null=True)
     sent_by = models.ForeignKey(Clients, on_delete=models.SET_NULL, null=True)
     status = models.CharField(choices=STATUS, default='Pending', max_length=30)
 

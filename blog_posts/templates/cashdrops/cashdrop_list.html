@@ -228,7 +228,7 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="avatar-lg rounded-circle bg-soft-danger">
-                                                <i class="fe-close font-22 avatar-title text-danger"></i>
+                                                <i class="fe-users font-22 avatar-title text-danger"></i>
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -254,30 +254,32 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Location</th>
                                             <th>Receiver</th>
+                                            <th>Receiver No.</th>
+                                            <th>Location</th>
                                             <th>Deliver By</th>
                                             <th>Amount</th>
                                             <th>Rate</th>
-                                            <th>Agent</th>
-                                            <th>Client</th>
+                                            <th>Personnel</th>
                                             <th>Status</th>
                                             <th>Action</th>
+                                            <th>Client</th>
                                         </tr>
                                         </thead>
 
                                         <tbody>
-                                        {% for cashdrop in object_list %}
+                                        {% for cashdrop in cashdrops %}
                                         <tr>
                                             <td><b><a href="{% url "cashdrops:cashdrop_edit" cashdrop.id %}">{{ cashdrop.id }}</a></b></td>
-                                            <td>
-                                                <a href="javascript: void(0);" class="text-body">
-                                                    <span class="ml-2">{{ cashdrop.delivery_location }}</span>
-                                                </a>
-                                            </td>
 
                                             <td>
                                                 {{ cashdrop.receiver }}
+                                            </td>
+                                            <td>
+                                                {{ cashdrop.receiver_phone }}
+                                            </td>
+                                            <td>
+                                                {{ cashdrop.delivery_location }}
                                             </td>
 
                                             <td>
@@ -291,10 +293,7 @@
                                                 {{ cashdrop.rate }}
                                             </td>
                                             <td>
-                                                {{ cashdrop.delivery_agent }}
-                                            </td>
-                                            <td>
-                                                {{ cashdrop.sent_by}}
+                                                {{ cashdrop.delivery_personnel }}
                                             </td>
                                             <td>
                                                 {{ cashdrop.status }}
@@ -307,6 +306,9 @@
                                                         <a class="dropdown-item" href="{% url "cashdrops:cashdrop_delete" cashdrop.id %}"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
                                                     </div>
                                                 </div>
+                                            </td>
+                                            <td>
+                                                {{ cashdrop.sent_by}}
                                             </td>
                                         </tr>
                                         {% endfor %}
