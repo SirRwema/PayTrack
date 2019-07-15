@@ -55,7 +55,7 @@ def client_create(request, template_name='clients/client_form.html'):
 
 @login_required(login_url='/login/')
 def client_update(request, pk, template_name='clients/client_form.html'):
-    client = get_object_or_404(Client, pk=pk)
+    client = get_object_or_404(Clients, pk=pk)
     form = ClientForm(request.POST or None, instance=client)
     if form.is_valid():
         form.save()
@@ -71,7 +71,7 @@ def client_update(request, pk, template_name='clients/client_form.html'):
 
 @login_required(login_url='/login/')
 def client_delete(request, pk, template_name='clients/client_delete.html'):
-    client = get_object_or_404(Client, pk=pk)
+    client = get_object_or_404(Clients, pk=pk)
     if request.method=='POST':
         post.delete()
         return redirect('clients:client_list')

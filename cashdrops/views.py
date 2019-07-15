@@ -22,7 +22,13 @@ class CashdropForm(ModelForm):
                     'sent_by': Select(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'}),
                     'status': Select(attrs={'class': 'form-control mb-2', 'id': 'inlineFormInput'})
                 }
-
+    def __init__(self,total_cashdrops,pending_cashdrops,complete_cashdrops,cancelled_cashdrops, *args, **kwargs):
+        super(self).__init__(*args, **kwargs)
+        self.total_cashdrops = total_cashdrops
+        self.pending_cashdrops = pending_cashdrops
+        self.complete_cashdrops = complete_cashdrops
+        self.cancelled_cashdrops = cancelled_cashdrops
+        
 @login_required(login_url='/accounts/login/')
 def counters(request, template_name='cashdrops/cashdrop_list.html' ):
     total_cashdrops = Cashdrop.objects.count()
