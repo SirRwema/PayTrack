@@ -2,11 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>PayTracker - CashDrop Form</title>
+        <title>PayTracker - Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured payment tracking software for sweet investments group" name="description" />
         <meta content="Tumukunde Arnold" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
         {% load staticfiles %}
         <!-- App favicon -->
         <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
@@ -18,96 +19,73 @@
 
     </head>
 
-    <body>
+    <body class="authentication-bg authentication-bg-pattern">
 
-        <!-- Begin page -->
-        <div id="wrapper">
+        <div class="account-pages mt-5 mb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card">
 
-            <!-- Topbar Start -->
-            <div class="navbar-custom">
+                            <div class="card-body p-4">
+                                
+                                <div class="text-center w-75 m-auto">
+                                    <a href="{% url 'home' %}">
+                                        <span><img src="{% static 'assets/images/logo-dark.png' %}" alt="" height="18"></span>
+                                    </a>
+                                    <p class="text-muted mb-4 mt-3">Enter your username and password to access your dashboard.</p>
+                                </div>
 
-                <!-- LOGO -->
-                <div class="logo-box">
-                    <a href="index.html" class="logo text-center">
-                        <span class="logo-lg">
-                             <span class="logo-lg-text-light">PayTrack</span> 
-                        </span>
-                        <span class="logo-sm">
-                            <span class="logo-sm-text-dark">P</span>
-                            
-                        </span>
-                    </a>
+                                <h5 class="auth-title">Sign In</h5>
+
+                                <form method="post" action="{% url 'login' %}">
+                                    {% csrf_token %}
+                                    <div class="form-group mb-3">
+                                        <label for="username">Username</label>
+                                        <input class="form-control" type="text" id="username" name="username" required="" placeholder="username">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="password">Password</label>
+                                        <input class="form-control" type="password" name="password" required="" id="password" placeholder="Enter your password">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="custom-control custom-checkbox checkbox-info">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-signin">
+                                            <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <button class="btn btn-danger btn-block" type="submit"> Log In </button>
+                                    </div>
+                                    <input type="hidden" name="next" value="{{ next }}" />
+                                </form>
+
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <p> <a href="pages-recoverpw.html" class="text-muted ml-1">Forgot your password?</a></p>
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
                 </div>
-
-                <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-                    <li>
-                        <button class="button-menu-mobile waves-effect">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </li>
-                </ul>
+                <!-- end row -->
             </div>
-            <!-- end Topbar -->
-
-
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
-
-            <div class="content-page">
-                <div class="content">
-
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box">
-                                    <h2 class="header-title mb-4">Login</h2>
-                                    <form method='post'>{% csrf_token %}
-                                        {{ form.as_p }}
-                                        <input class="btn btn-primary waves-effect waves-light" type="submit" value="Submit" />
-                                    </form>
-                                </div>
-                            </div><!-- end col -->
-                        </div>
-                        <!-- end row -->    
-                        
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
-
-                <!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                2019 &copy; PayTracker by <a href="">HostGivers</a> 
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right footer-links d-none d-sm-block">
-                                    <a href="javascript:void(0);">About Us</a>
-                                    <a href="javascript:void(0);">Help</a>
-                                    <a href="javascript:void(0);">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
+            <!-- end container -->
         </div>
-        <!-- END wrapper -->
+        <!-- end page -->
 
+
+        <footer class="footer footer-alt">
+            2019 &copy; PayTrack by <a href="" class="text-muted">HostGivers</a> 
+        </footer>
 
         <!-- Vendor js -->
         <script src="{% static 'assets/js/vendor.min.js' %}"></script>
